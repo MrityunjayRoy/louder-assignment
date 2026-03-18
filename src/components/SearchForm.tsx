@@ -28,7 +28,7 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="e.g. A 10-person leadership retreat in the mountains for 3 days with a $4k budget"
-          className="block w-full pl-11 pr-4 py-4 bg-white border border-[var(--border)] rounded-2xl text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent shadow-sm transition-all"
+          className="block w-full pl-11 pr-4 py-4 bg-white dark:bg-[var(--background)] border border-[var(--border)] rounded-2xl text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent shadow-sm transition-all"
           disabled={isLoading}
         />
       </div>

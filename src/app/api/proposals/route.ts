@@ -28,9 +28,9 @@ export async function POST(req: Request) {
     const savedProposal = await newProposal.save();
 
     return NextResponse.json(savedProposal, { status: 201 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('POST /api/proposals error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: (error as Error).message || 'Internal Server Error' }, { status: 500 });
   }
 }
 
@@ -42,8 +42,8 @@ export async function GET() {
     const proposals = await Proposal.find({}).sort({ createdAt: -1 }).lean();
 
     return NextResponse.json(proposals, { status: 200 });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('GET /api/proposals error:', error);
-    return NextResponse.json({ error: error.message || 'Internal Server Error' }, { status: 500 });
+    return NextResponse.json({ error: (error as Error).message || 'Internal Server Error' }, { status: 500 });
   }
 }

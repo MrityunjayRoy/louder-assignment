@@ -1,12 +1,23 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
   --primary: #6750A4;
   --primary-subtle: #E8DEF8;
-  --surface: #FDFBFF; /* Soft variation for cards if needed */
+  --surface: #FDFBFF;
   --border: #E5E5E5;
+}
+
+.dark {
+  --background: #1C1B1F;
+  --foreground: #E6E1E5;
+  --primary: #D0BCFF;
+  --primary-subtle: #4A4458;
+  --surface: #2B2930;
+  --border: #49454F;
 }
 
 @theme inline {

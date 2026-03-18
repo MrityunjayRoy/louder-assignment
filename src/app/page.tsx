@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import SearchForm from '@/components/SearchForm';
 import ProposalCard, { ProposalData } from '@/components/ProposalCard';
 import LoadingIndicator from '@/components/LoadingIndicator';
-import { Sparkles } from 'lucide-react';
+import ThemeToggle from '@/components/ThemeToggle';
 
 export default function Home() {
   const [proposals, setProposals] = useState<ProposalData[]>([]);
@@ -50,9 +50,9 @@ export default function Home() {
       
       // Prepend to history so it maintains sync with DB
       setProposals(prev => [newProposal, ...prev.filter(p => p._id !== newProposal._id)]);
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error('Generate error:', err);
-      setError(err.message || 'An unexpected error occurred. Please try again.');
+      setError((err as Error).message || 'An unexpected error occurred. Please try again.');
     } finally {
       setIsLoading(false);
     }
@@ -60,16 +60,18 @@ export default function Home() {
 
   return (
     <main className="min-h-screen max-w-4xl mx-auto px-6 py-12 md:py-20">
-      <header className="mb-12 text-center md:text-left">
-        <div className="inline-flex items-center justify-center p-3 bg-[var(--primary-subtle)] rounded-2xl mb-6">
-          <Sparkles className="h-8 w-8 text-[var(--primary)]" />
+      <header className="mb-12 flex flex-col md:flex-row md:items-start justify-between gap-6 text-center md:text-left">
+        <div>
+          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight mb-4">
+            AI Event Concierge
+          </h1>
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
+            Describe your ideal corporate offsite or event. Our AI will perfectly match you with the right venue, location, and budget.
+          </p>
         </div>
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4">
-          AI Event Concierge
-        </h1>
-        <p className="text-lg text-gray-600 max-w-2xl">
-          Describe your ideal corporate offsite or event. Our AI will perfectly match you with the right venue, location, and budget.
-        </p>
+        <div className="flex justify-center md:justify-end">
+          <ThemeToggle />
+        </div>
       </header>
 
       <section className="mb-16">
@@ -90,7 +92,7 @@ export default function Home() {
 
         {currentProposal && !isLoading && (
           <section className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Your Proposal</h2>
+            <h2 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-6">Your Proposal</h2>
             <ProposalCard proposal={currentProposal} isLatest={true} />
           </section>
         )}
@@ -98,12 +100,12 @@ export default function Home() {
         {proposals.length > 0 && (
           <section className={isLoading || currentProposal ? "opacity-80 transition-opacity" : ""}>
             <div className="flex items-center justify-between mb-8 pb-4 border-b border-[var(--border)]">
-              <h2 className="text-xl font-bold text-gray-900">Recent Searches</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-gray-100">Recent Searches</h2>
               <span className="text-sm text-gray-500 bg-[var(--surface)] px-3 py-1 rounded-full font-medium">
                 {proposals.length} events
               </span>
             </div>
-            <div className="grid gap-6">
+            <div className="grid gap-6 grid-cols-1 lg:grid-cols-2">
               {proposals.map(proposal => (
                 <ProposalCard key={proposal._id || Math.random().toString()} proposal={proposal} />
               ))}
