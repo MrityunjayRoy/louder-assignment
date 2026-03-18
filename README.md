@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# AI Event Concierge
 
-## Getting Started
+A minimal, modern Next.js platform that helps users plan corporate offsites using the Google Gemini AI.
 
-First, run the development server:
+## Technologies Used
+- **Next.js (App Router)** - Fast UI and API routes
+- **Tailwind CSS** - Clean, minimal UI design implementation
+- **MongoDB** - Database for historical records persistence
+- **Google Gemini API** (`@google/genai`) - To parse requirements into structured, robust recommendations
 
+## Setup Instructions
+
+### 1. Install Dependencies
+Run the following command in the project directory to install all required npm modules:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Environment Variables
+Create a `.env.local` file in the root of the project (`/home/mj/louder-assessment/.env.local`) using the structure below:
+```env
+MONGODB_URI=your_mongodb_connection_string
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Run the Development Server
+Start the application locally:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 4. Access the App
+Open your browser and navigate to [http://localhost:3000](http://localhost:3000). 
+You will see an interface to type your natural language prompt. Example: *"A 10-person leadership retreat in the mountains for 3 days with a $4k budget"*. The application will return a parsed, structured event venue proposal.
