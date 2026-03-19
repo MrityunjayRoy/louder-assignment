@@ -35,7 +35,7 @@ export default function SearchForm({ onSubmit, isLoading }: SearchFormProps) {
       <button
         type="submit"
         disabled={isLoading || !prompt.trim()}
-        className="px-8 py-4 bg-[var(--primary)] text-white font-medium rounded-2xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm whitespace-nowrap"
+        className="px-8 py-4 bg-[var(--primary)] dark:bg-purple-300 text-white dark:text-black font-medium rounded-2xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm whitespace-nowrap"
       >
         Plan Event
       </button>

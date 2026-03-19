@@ -17,7 +17,7 @@ interface ProposalCardProps {
 
 export default function ProposalCard({ proposal, isLatest = false }: ProposalCardProps) {
   return (
-    <div className={`p-6 rounded-3xl border border-[var(--border)] transition-all ${isLatest ? 'bg-[var(--surface)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] ring-1 ring-[var(--primary-subtle)]' : 'bg-white dark:bg-[var(--background)] shadow-sm hover:shadow-md'}`}>
+    <div className={`p-6 rounded-xl border border-[var(--border)] transition-all ${isLatest ? 'bg-[var(--surface)] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.1)] ring-1 ring-[var(--primary-subtle)]' : 'bg-white dark:bg-[var(--background)] shadow-sm hover:shadow-md'}`}>
       <div className="mb-4">
         {isLatest && (
           <span className="inline-block px-3 py-1 mb-3 text-xs font-semibold tracking-wide text-[var(--primary)] uppercase bg-[var(--primary-subtle)] rounded-full">
@@ -29,16 +29,25 @@ export default function ProposalCard({ proposal, isLatest = false }: ProposalCar
           {proposal.venueName}
         </h3>
       </div>
-      
-      <div className="flex flex-col sm:flex-row gap-4 mb-6 text-sm text-gray-600 dark:text-gray-400">
+
+      <div className="flex flex-col sm:flex-row sm:justify-between gap-4 mb-4 text-sm text-gray-600 dark:text-gray-400">
         <div className="flex items-center gap-1.5">
           <MapPin className="h-4 w-4 text-gray-400" />
           <span>{proposal.location}</span>
         </div>
-        <div className="flex items-center gap-1.5">
-          <DollarSign className="h-4 w-4 text-gray-400" />
-          <span>{proposal.estimatedCost}</span>
+        <div className="flex items-center gap-1.5 text-[var(--primary)] dark:text-purple-250">
+          {/* <DollarSign className="h-4 w-4 text-gray-400" /> */}
+          <span className="font-bold">{proposal.estimatedCost}</span>
         </div>
+      </div>
+
+      <div className='mb-3'>
+        <button
+          type="submit"
+          className="px-6 py-3 bg-[var(--primary)] dark:bg-purple-300 text-white dark:text-black font-medium rounded-2xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm whitespace-nowrap"
+        >
+          Book Venue
+        </button>
       </div>
 
       <div className="pt-4 border-t border-[var(--border)]">
@@ -47,7 +56,7 @@ export default function ProposalCard({ proposal, isLatest = false }: ProposalCar
           {proposal.justification}
         </p>
       </div>
-      
+
       {!isLatest && proposal.prompt && (
         <div className="mt-4 pt-4 border-t border-[var(--border)]">
           <p className="text-xs text-gray-500 italic">
