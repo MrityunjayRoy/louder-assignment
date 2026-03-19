@@ -22,7 +22,7 @@ The JSON structure must exactly match the following:
   "venueName": "Name of the venue",
   "location": "City, State or Region",
   "estimatedCost": "A specific dollar amount or tightly constrained range",
-  "justification": "A short, professional paragraph explaining why this venue perfectly fits the prompt requirements."
+  "justification": "A short, professional 2-3 sentence paragraph explaining why this venue perfectly fits the prompt requirements. Keep the paragraph in points"
 }`;
 
   try {

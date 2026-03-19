@@ -25,7 +25,7 @@ export default function ProposalCard({ proposal, isLatest = false }: ProposalCar
           </span>
         )}
         <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 flex items-center gap-2">
-          <Building className="h-5 w-5 text-[var(--primary)]" />
+          {/* <Building className="h-5 w-5 text-[var(--primary)]" /> */}
           {proposal.venueName}
         </h3>
       </div>
