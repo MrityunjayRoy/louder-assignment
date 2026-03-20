@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { CalendarCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
