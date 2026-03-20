@@ -22,13 +22,13 @@ The JSON structure must exactly match the following:
   "venueName": "Name of the venue",
   "location": "City, State or Region",
   "estimatedCost": "A specific dollar amount or tightly constrained range",
-  "justification": "A short, professional 2-3 sentence paragraph explaining why this venue perfectly fits the prompt requirements. Keep the paragraph in points"
+  "justification": "A short, professional paragraph explaining why this venue perfectly fits the prompt requirements. Keep the paragraph in points"
 }`;
 
   try {
     const client = getAiClient();
     const response = await client.models.generateContent({
-      model: 'gemini-2.5-flash',
+      model: 'gemini-2.5-flash-lite',
       contents: prompt,
       config: {
         systemInstruction: systemInstruction,

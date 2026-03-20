@@ -15,9 +15,6 @@ export default function Header() {
           {/* Section 1: Logo */}
           <div className="flex-shrink-0 flex items-center">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-9 h-9 rounded-xl bg-[var(--primary)] flex items-center justify-center text-white shadow-sm group-hover:scale-105 transition-transform">
-                <CalendarCheck className="w-5 h-5" />
-              </div>
               <span className="text-xl font-bold text-[var(--foreground)] tracking-tight">
                 Event Concierge
               </span>
@@ -43,9 +40,9 @@ export default function Header() {
           {/* Section 3: Actions (Dark Mode toggle, Settings, User Profile) */}
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
-            
+
             <div className="h-6 w-px bg-[var(--border)] mx-1" aria-hidden="true" />
-            
+
             <button className="p-2 text-gray-500 hover:text-[var(--foreground)] hover:bg-[var(--surface)] rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" aria-label="Settings">
               <Settings className="w-5 h-5" />
             </button>
