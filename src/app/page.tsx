@@ -4,7 +4,8 @@ import { useState, useEffect } from 'react';
 import SearchForm from '@/components/SearchForm';
 import ProposalCard, { ProposalData } from '@/components/ProposalCard';
 import LoadingIndicator from '@/components/LoadingIndicator';
-import ThemeToggle from '@/components/ThemeToggle';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   const [proposals, setProposals] = useState<ProposalData[]>([]);
@@ -60,29 +61,24 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen max-w-5xl mx-auto px-6 py-6 md:py-10">
-      <header className="mb-12 max-w-auto flex flex-col md:flex-row md:items-start justify-between gap-6 text-center md:text-left">
-        <div>
-          <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 dark:text-gray-100 tracking-tight mb-4">
+    <div className="flex flex-col min-h-screen bg-[var(--background)]">
+      <Header />
+      
+      <main className="flex-1 max-w-5xl w-full mx-auto px-6 py-6 pt-24 md:py-10 md:pt-28">
+        <section className="mb-16 text-center md:text-left">
+          <h1 className="text-4xl md:text-5xl font-extrabold text-[var(--foreground)] tracking-tight mb-4">
             AI Event Concierge
           </h1>
-        </div>
-        <div className="flex justify-center md:justify-end">
-          <ThemeToggle />
-        </div>
-      </header>
-
-      <section className="mb-16" >
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-          Describe your ideal corporate offsite or event. Our AI will perfectly match you with the right venue, location, and budget.
-        </p>
-        <SearchForm onSubmit={handleSearch} isLoading={isLoading} />
-        {error && (
-          <div className="p-4 mb-6 text-sm text-red-700 bg-red-50 rounded-2xl border border-red-100">
-            {error}
-          </div>
-        )}
-      </section>
+          <p className="mb-8 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto md:mx-0">
+            Describe your ideal corporate offsite or event. Our AI will perfectly match you with the right venue, location, and budget.
+          </p>
+          <SearchForm onSubmit={handleSearch} isLoading={isLoading} />
+          {error && (
+            <div className="p-4 mb-6 text-sm text-red-700 bg-red-50 rounded-2xl border border-red-100 text-left">
+              {error}
+            </div>
+          )}
+        </section>
 
       <div className="space-y-16">
         {isLoading && (
@@ -109,7 +105,7 @@ export default function Home() {
             {/* {historyToggle */}
             <button
               onClick={() => { setHistoryToggle(!showHistory) }}
-              className="px-8 py-4 mb-4 bg-[var(--border)] dark:bg-[var(--border)] text-white dark:text-white font-medium rounded-2xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm whitespace-nowrap"
+              className="px-8 py-4 mb-4 bg-[var(--primary-subtle)] dark:bg-[var(--border)] text-black dark:text-white font-medium rounded-2xl hover:opacity-90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors shadow-sm whitespace-nowrap"
             >
               {showHistory ? 'Hide Recent Searches' : 'Show Recent Searches'}
             </button>
@@ -128,6 +124,8 @@ export default function Home() {
           </div>
         )}
       </div>
-    </main >
+      </main>
+      <Footer />
+    </div>
   );
 }
